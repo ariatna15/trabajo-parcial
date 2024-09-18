@@ -4,8 +4,10 @@
 #include "Residuo.h"
 #include <iostream>
 #include <vector>
-using namespace std;
 using namespace System;
+using namespace std;
+
+
 
 class ListaRecursos {
 protected:

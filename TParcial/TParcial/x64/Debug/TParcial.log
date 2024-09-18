@@ -1,0 +1,6 @@
+﻿  Source.cpp
+C:\Users\saga\Documents\UPC\Algoritmos\TParcial\TParcial\TParcial\Source.cpp(19,3): warning C4996: '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  Generando código...
+  Source.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
+  TParcial.vcxproj -> C:\Users\saga\Documents\UPC\Algoritmos\TParcial\TParcial\x64\Debug\TParcial.exe

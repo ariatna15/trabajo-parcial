@@ -111,7 +111,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Agua.h" />
+    <ClInclude Include="Enemigo.h" />
+    <ClInclude Include="Juego.h" />
+    <ClInclude Include="ListaEnemigo.h" />
+    <ClInclude Include="ListaRecursos.h" />
     <ClInclude Include="Personaje.h" />
+    <ClInclude Include="Residuo.h" />
+    <ClInclude Include="Semilla.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
