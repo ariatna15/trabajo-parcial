@@ -1,6 +1,5 @@
 #pragma once
 #include "iostream"
-
 using namespace System;
 using namespace std;
 
@@ -31,7 +30,7 @@ using namespace std;
 
 
 
-void Instrucciones() {
+void instrucciones() {
     system("cls");
     Console::SetCursorPosition(40, 12); cout << "\t   INSTRUCCIONES";
     Console::SetCursorPosition(40, 13); cout << "\t   -------------";
@@ -45,7 +44,7 @@ void Instrucciones() {
     Console::SetCursorPosition(20, 18); cout << "\t5. Pierdes si el tiempo se te acaba.";
     Console::ForegroundColor = ConsoleColor::White;
     Console::SetCursorPosition(20, 21); cout << "\tPresiona cualquier tecla para regresar";
-    _getch(); // Espera una tecla para regresar al menú
+
 }
 
 void game_over() {
@@ -79,26 +78,25 @@ void creditos() {
     int x = 40;
     int y = 5;
     Console::ForegroundColor = ConsoleColor::DarkMagenta;
-   Console::SetCursorPosition(x,y); cout << "  ____       __     _   _            ";
-   Console::SetCursorPosition(x,y+1); cout << " / ___|_ __ /_/  __| (_) |_ ___   ___ ";
-   Console::SetCursorPosition(x,y+2); cout << "| |   | '__/ _ \\/ _` | | __/  \\/ __|";
-   Console::SetCursorPosition(x,y+3); cout << "| |___| | |  __/ (_|_| | || (_) \\__ \\";
-   Console::SetCursorPosition(x,y+4); cout << " \\____|_|  \\___|\\__,_|_|\\__\\___/|___/";
-   Console::ForegroundColor = ConsoleColor::White;
-   Console::SetCursorPosition(x,y+7); cout << " UPC - SEDE MONTERRICO";
-   Console::SetCursorPosition(x,y+8); cout << "=======================";
-   Console::SetCursorPosition(x,y+10); cout << "ALGORITMOS - CC22";
-   Console::SetCursorPosition(x,y+11); cout << "Programadores:";
-   Console::SetCursorPosition(x,y+13); cout << "-Ryan Mateo Zavaleta Jave ";
-   Console::SetCursorPosition(x,y+15); cout << "-Ariatna Ximena Bravo Torres ";
-   Console::SetCursorPosition(x,y+17); cout << "-Josue Froilan Laurente Castrejon ";
-    _getch();
- 
+    Console::SetCursorPosition(x, y); cout << "  ____       __     _   _            ";
+    Console::SetCursorPosition(x, y + 1); cout << " / ___|_ __ /_/  __| (_) |_ ___   ___ ";
+    Console::SetCursorPosition(x, y + 2); cout << "| |   | '__/ _ \\/ _` | | __/  \\/ __|";
+    Console::SetCursorPosition(x, y + 3); cout << "| |___| | |  __/ (_|_| | || (_) \\__ \\";
+    Console::SetCursorPosition(x, y + 4); cout << " \\____|_|  \\___|\\__,_|_|\\__\\___/|___/";
+    Console::ForegroundColor = ConsoleColor::White;
+    Console::SetCursorPosition(x, y + 7); cout << " UPC - SEDE MONTERRICO";
+    Console::SetCursorPosition(x, y + 8); cout << "=======================";
+    Console::SetCursorPosition(x, y + 10); cout << "ALGORITMOS - CC22";
+    Console::SetCursorPosition(x, y + 11); cout << "Programadores:";
+    Console::SetCursorPosition(x, y + 13); cout << "-Ryan Mateo Zavaleta Jave ";
+    Console::SetCursorPosition(x, y + 15); cout << "-Ariatna Ximena Bravo Torres ";
+    Console::SetCursorPosition(x, y + 17); cout << "-Josue Froilan Laurente Castrejon ";
+
 }
 
 
 
-void Salir() {
+void salir() {
     system("cls");
     int x = 20;
     int y = 10;
@@ -125,44 +123,44 @@ void Salir() {
 int menu() {
     int opcion;
     /*bool continuar = true;*/ // Variable para controlar el bucle del menú
-        system("cls");
-        /*Consola();*/ // Dibujar la consola en cada iteración del menú
-        Console::ForegroundColor = ConsoleColor::Magenta;
-        Console::SetCursorPosition(40,3); cout<<" _______        _           _       ";
-        Console::SetCursorPosition(40,4); cout<<"|__   __|      | |         (_)      ";
-        Console::SetCursorPosition(40,5); cout<<"   | |_ __ __ _| |__   __ _ _  ___  ";
-        Console::SetCursorPosition(40,6); cout<<"   | | '__/ _` | '_ \\ / _` | |/ _ \\ ";
-        Console::SetCursorPosition(40,7); cout<<"   | | | | (_| | |_) | (_| | | (_) |";
-        Console::SetCursorPosition(40,8); cout<<"   |_|_|  \\__,_|_.__/ \\__,_| |\\___/ ";
-        Console::SetCursorPosition(40,9); cout<<"                          _/ |      ";
-        Console::SetCursorPosition(40,10); cout << "                         |__/       ";
-        Console::SetCursorPosition(43,11); cout<<" _____               _       _ ";
-        Console::SetCursorPosition(43,12); cout<<"|  __ \\             (_)     | |";
-        Console::SetCursorPosition(43,13); cout<<"| |__) |_ _ _ __ ___ _  __ _| |";
-        Console::SetCursorPosition(43,14); cout<<"|  ___/ _` | '__/ __| |/ _` | |";
-        Console::SetCursorPosition(43,15); cout<<"| |  | (_| | | | (__| | (_| | |";
-        Console::SetCursorPosition(43,16); cout << "|_|   \\__,_|_|  \\___|_|\\__,_|_|";
-                              
-        Console::ForegroundColor = ConsoleColor::White;
-        Console::SetCursorPosition(50, 19); cout << "[1]JUGAR";
-        Console::ForegroundColor = ConsoleColor::Green;
-        Console::SetCursorPosition(50, 20); cout << "[2]CREDITOS";
-        Console::ForegroundColor = ConsoleColor::Blue;
-        Console::SetCursorPosition(50, 21); cout << "[3]INSTRUCCIONES";
-        Console::ForegroundColor = ConsoleColor::Red;
-        Console::SetCursorPosition(50, 22); cout << "[4]SALIR";
-        Console::ForegroundColor = ConsoleColor::White;
-        Console::SetCursorPosition(50, 25); cout << "ELEGIR OPCION: "; cin >> opcion;
+    system("cls");
+    /*Consola();*/ // Dibujar la consola en cada iteración del menú
+    Console::ForegroundColor = ConsoleColor::Magenta;
+    Console::SetCursorPosition(40, 3); cout << " _______        _           _       ";
+    Console::SetCursorPosition(40, 4); cout << "|__   __|      | |         (_)      ";
+    Console::SetCursorPosition(40, 5); cout << "   | |_ __ __ _| |__   __ _ _  ___  ";
+    Console::SetCursorPosition(40, 6); cout << "   | | '__/ _` | '_ \\ / _` | |/ _ \\ ";
+    Console::SetCursorPosition(40, 7); cout << "   | | | | (_| | |_) | (_| | | (_) |";
+    Console::SetCursorPosition(40, 8); cout << "   |_|_|  \\__,_|_.__/ \\__,_| |\\___/ ";
+    Console::SetCursorPosition(40, 9); cout << "                          _/ |      ";
+    Console::SetCursorPosition(40, 10); cout << "                         |__/       ";
+    Console::SetCursorPosition(43, 11); cout << " _____               _       _ ";
+    Console::SetCursorPosition(43, 12); cout << "|  __ \\             (_)     | |";
+    Console::SetCursorPosition(43, 13); cout << "| |__) |_ _ _ __ ___ _  __ _| |";
+    Console::SetCursorPosition(43, 14); cout << "|  ___/ _` | '__/ __| |/ _` | |";
+    Console::SetCursorPosition(43, 15); cout << "| |  | (_| | | | (__| | (_| | |";
+    Console::SetCursorPosition(43, 16); cout << "|_|   \\__,_|_|  \\___|_|\\__,_|_|";
 
-        return opcion;
+    Console::ForegroundColor = ConsoleColor::White;
+    Console::SetCursorPosition(50, 19); cout << "[1]JUGAR";
+    Console::ForegroundColor = ConsoleColor::Green;
+    Console::SetCursorPosition(50, 20); cout << "[2]CREDITOS";
+    Console::ForegroundColor = ConsoleColor::Blue;
+    Console::SetCursorPosition(50, 21); cout << "[3]INSTRUCCIONES";
+    Console::ForegroundColor = ConsoleColor::Red;
+    Console::SetCursorPosition(50, 22); cout << "[4]SALIR";
+    Console::ForegroundColor = ConsoleColor::White;
+    Console::SetCursorPosition(50, 25); cout << "ELEGIR OPCION: "; cin >> opcion;
+
+    return opcion;
 }
 
-void Cuadro() {
+void cuadro() {
     int ancho = 120;  // Ancho del rectángulo
     int alto = 35;    // Alto del rectángulo
     int posX = 0;    // Desplazamiento horizontal (espacios en blanco)
     int posY = 5;    // Desplazamiento vertical (nuevas líneas)
-        
+
     for (int i = 0; i < posY; i++) {
         cout << endl;
     }
@@ -179,16 +177,16 @@ void Cuadro() {
                 cout << char(219);
             }
             else {
-                cout << " ";  
+                cout << " ";
             }
         }
 
-        cout << endl;  
+        cout << endl;
     }
 
-    _getch();
+
 }
-void Cargando() {
+void cargando() {
     system("cls");
     Console::SetCursorPosition(55, 20); cout << "CARGANDO..";
     for (int i = 40; i <= 76; i++) {
@@ -196,10 +194,11 @@ void Cargando() {
     }
     for (int i = 40; i <= 76; i++) {
         Console::SetCursorPosition(i, 23); printf("%c", 219);
-        Sleep(35);
+        _sleep(35);
     }
     system("cls");
 
 
 }
+
 

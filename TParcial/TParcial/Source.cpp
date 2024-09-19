@@ -1,4 +1,4 @@
-#include "pch.h"
+
 #include "Personaje.h"
 #include "Funciones.h"
 #include "Juego.h"
@@ -39,13 +39,15 @@ int main() {
 		residuoAgarra->agregarResiduo(nuevoResiduo);
 	}
 
-
 	char tecla;
 	while (1) {
 		Console::Clear();
 		int op = menu();
 
+
+
 		if (op == 1) {
+			system("cls");
 			Console::Clear();
 			cargando();
 			cuadro();
@@ -63,7 +65,6 @@ int main() {
 			semillaAgarra->quitarSemilla();
 			residuoAgarra->quitarResiduo();
 
-
 		}
 		else if (op == 2) {
 			creditos();
@@ -79,12 +80,13 @@ int main() {
 		else {
 
 		}
-		_sleep(100);
+		system("pause>0");
 
 
 
 	}
-	system("pause>0");
 	return 0;
 }
+
+
 

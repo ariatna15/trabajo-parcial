@@ -116,6 +116,7 @@
     <ClInclude Include="Juego.h" />
     <ClInclude Include="ListaEnemigo.h" />
     <ClInclude Include="ListaRecursos.h" />
+    <ClInclude Include="Funciones.h" />
     <ClInclude Include="Personaje.h" />
     <ClInclude Include="Residuo.h" />
     <ClInclude Include="Semilla.h" />
