@@ -32,5 +32,6 @@ int main() {
 		_sleep(100);
 
 	}
+	system("pause>0");
 	return 0;
 }
