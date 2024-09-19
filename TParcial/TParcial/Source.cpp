@@ -23,17 +23,17 @@ int main() {
 	Juego* residuoAgarra = new Juego(1, 7);
 
 	for (int i = 0; i < aguaTotal; i++) {
-		Agua* nuevoAgua = new Agua(generarAleatorio(5, 110), generarAleatorio(5, 30));
+		Agua* nuevoAgua = new Agua(generarAleatorio(5, 43), generarAleatorio(5, 30));
 		aguaAgarra->agregarAgua(nuevoAgua);
 	}
 
 	for (int i = 0; i < semillaTotal; i++) {
-		Semilla* nuevaSemilla = new Semilla(generarAleatorio(5, 110), generarAleatorio(5, 30));
+		Semilla* nuevaSemilla = new Semilla(generarAleatorio(5, 40), generarAleatorio(5, 50));
 		semillaAgarra->agregarSemilla(nuevaSemilla);
 	}
 
 	for (int i = 0; i < residuoTotal; i++) {
-		Residuo* nuevoResiduo = new Residuo(generarAleatorio(5, 110), generarAleatorio(5, 30));
+		Residuo* nuevoResiduo = new Residuo(generarAleatorio(5, 20), generarAleatorio(5, 30));
 		residuoAgarra->agregarResiduo(nuevoResiduo);
 	}
 
@@ -80,6 +80,8 @@ int main() {
 						nuevoResiduo->dibujar();
 					}
 				}
+
+				// Verifica si el personaje ha recogido algún recurso
 				aguaAgarra->quitarAgua();
 				semillaAgarra->quitarSemilla();
 				residuoAgarra->quitarResiduo();
@@ -100,4 +102,3 @@ int main() {
 	system("pause>0");
 	return 0;
 }
-
