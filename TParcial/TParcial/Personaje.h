@@ -8,6 +8,7 @@ private:
 	int px, py;
 	int pdx, pdy;
 	int ancho, alto;
+	
 public:
 	Personaje();
 	Personaje(int _px, int _py);

@@ -9,33 +9,37 @@ int generarAleatorio(int max, int min) {
 }
 
 int main() {
-
 	srand(time(NULL));
 	Console::SetWindowSize(120, 40);
 	Console::CursorVisible = false;
-	Personaje* Objpersonaje;
-	Objpersonaje = new Personaje(60, 37);
+	Personaje* Objpersonaje = new Personaje(60, 37);
 
-	int aguaTotal = generarAleatorio(4,8);
-	int semillaTotal = generarAleatorio(4,8);
-	int residuoTotal = generarAleatorio(4,8);
+	int aguaTotal = generarAleatorio(4, 8);
+	int semillaTotal = generarAleatorio(4, 8);
+	int residuoTotal = generarAleatorio(4, 8);
 
-	Juego* aguaAgarra = new Juego(1,5);
+	Juego* aguaAgarra = new Juego(1, 5);
 	Juego* semillaAgarra = new Juego(1, 2);
 	Juego* residuoAgarra = new Juego(1, 7);
 
+	int xMax = 118; //del borde max del cuadro: x - 2
+	int yMax = 38;  //del borde max del cuadro: y - 2  empezarán a generarse dentro de ese rango
+	int xMin = 2;   //del borde min del cuadro: x + 2
+	int yMin = 6;   //del borde min del cuadro: y + 2
+
+
 	for (int i = 0; i < aguaTotal; i++) {
-		Agua* nuevoAgua = new Agua(generarAleatorio(5,110), generarAleatorio(5,30));
+		Agua* nuevoAgua = new Agua(generarAleatorio(xMax, xMin), generarAleatorio(yMax, yMin));
 		aguaAgarra->agregarAgua(nuevoAgua);
 	}
 
 	for (int i = 0; i < semillaTotal; i++) {
-		Semilla* nuevaSemilla = new Semilla(generarAleatorio(5,100), generarAleatorio(5,30));
+		Semilla* nuevaSemilla = new Semilla(generarAleatorio(xMax, xMin), generarAleatorio(yMax, yMin));
 		semillaAgarra->agregarSemilla(nuevaSemilla);
 	}
 
 	for (int i = 0; i < residuoTotal; i++) {
-		Residuo* nuevoResiduo = new Residuo(generarAleatorio(5, 100), generarAleatorio(5, 30));
+		Residuo* nuevoResiduo = new Residuo(generarAleatorio(xMax, xMin), generarAleatorio(yMax, yMin));
 		residuoAgarra->agregarResiduo(nuevoResiduo);
 	}
 
@@ -44,35 +48,56 @@ int main() {
 		Console::Clear();
 		int op = menu();
 
-
-
 		if (op == 1) {
 			system("cls");
-			Console::Clear();
 			cargando();
 			cuadro();
 			bool jugando = true;
 			while (jugando) {
-				if (_kbhit()) { //aqui debe ir funcion de juego
+				if (_kbhit()) {
 					tecla = toupper(_getch());
 					Objpersonaje->borrar();
 					Objpersonaje->mover(tecla);
 					Objpersonaje->dibujar();
 				}
 				_sleep(100);
-			}
-			aguaAgarra->quitarAgua();
-			semillaAgarra->quitarSemilla();
-			residuoAgarra->quitarResiduo();
 
+				// Dibuja los recursos
+				if (aguaAgarra->tamAgua() > 0) {
+					for (int i = 0; i < aguaAgarra->tamAgua(); i++) {
+						Agua* nuevaAgua = aguaAgarra->obtenerAgua(i);
+						nuevaAgua->borrar();
+						nuevaAgua->dibujar();
+					}
+				}
+
+				if (semillaAgarra->tamSemilla() > 0) {
+					for (int i = 0; i < semillaAgarra->tamSemilla(); i++) {
+						Semilla* nuevaSemilla = semillaAgarra->obtenerSemilla(i);
+						nuevaSemilla->borrar();
+						nuevaSemilla->dibujar();
+					}
+				}
+
+				if (residuoAgarra->tamResiduo() > 0) {
+					for (int i = 0; i < residuoAgarra->tamResiduo(); i++) {
+						Residuo* nuevoResiduo = residuoAgarra->obtenerResiduo(i);
+						nuevoResiduo->borrar();
+						nuevoResiduo->dibujar();
+					}
+				}
+
+				// Verifica si el personaje ha recogido algún recurso
+				aguaAgarra->quitarAgua();
+				semillaAgarra->quitarSemilla();
+				residuoAgarra->quitarResiduo();
+			}
 		}
 		else if (op == 2) {
 			creditos();
-
 		}
 		else if (op == 3) {
 			instrucciones();
-
 		}
 		else if (op == 4) {
 			salir();
@@ -80,13 +105,8 @@ int main() {
 		else {
 
 		}
+		
 		system("pause>0");
-
-
-
 	}
 	return 0;
 }
-
-
-

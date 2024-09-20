@@ -10,6 +10,7 @@ public:
 	void quitarAgua();
 	void quitarSemilla();
 	void quitarResiduo();
+
 };
 
 Juego::Juego(int x, int y) : Personaje(x, y), ListaEnemigo(), ListaRecursos() {

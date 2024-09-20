@@ -26,7 +26,7 @@ C:\Users\saga\Documents\UPC\Algoritmos\TParcial\TParcial\TParcial\ListaRecursos.
 C:\Users\saga\Documents\UPC\Algoritmos\TParcial\TParcial\TParcial\ListaRecursos.h(70,28): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
   (compilando archivo de origen "Source.cpp")
   
-C:\Users\saga\Documents\UPC\Algoritmos\TParcial\TParcial\TParcial\Source.cpp(13,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-C:\Users\saga\Documents\UPC\Algoritmos\TParcial\TParcial\TParcial\Source.cpp(62,5): warning C4996: '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
+C:\Users\saga\Documents\UPC\Algoritmos\TParcial\TParcial\TParcial\Source.cpp(12,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\saga\Documents\UPC\Algoritmos\TParcial\TParcial\TParcial\Source.cpp(63,5): warning C4996: '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
   Source.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
   TParcial.vcxproj -> C:\Users\saga\Documents\UPC\Algoritmos\TParcial\TParcial\x64\Debug\TParcial.exe
