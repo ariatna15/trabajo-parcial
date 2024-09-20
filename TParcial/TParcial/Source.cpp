@@ -1,4 +1,3 @@
-
 #include "Personaje.h"
 #include "Funciones.h"
 #include "Juego.h"
@@ -105,7 +104,7 @@ int main() {
 		else {
 
 		}
-		
+
 		system("pause>0");
 	}
 	return 0;
