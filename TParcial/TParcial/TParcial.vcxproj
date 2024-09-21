@@ -120,6 +120,7 @@
     <ClInclude Include="Personaje.h" />
     <ClInclude Include="Residuo.h" />
     <ClInclude Include="Semilla.h" />
+    <ClInclude Include="Tiempo.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp" />

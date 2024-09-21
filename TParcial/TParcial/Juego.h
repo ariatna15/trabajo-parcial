@@ -2,21 +2,16 @@
 #include "Personaje.h"
 #include "ListaEnemigo.h"
 #include "ListaRecursos.h"
-
 class Juego : public Personaje, public ListaEnemigo, public ListaRecursos {
 public:
 	Juego(int x, int y);
-
 	void quitarAgua(Personaje* personaje);
 	void quitarSemilla(Personaje* personaje);
 	void quitarResiduo(Personaje* personaje);
-	void quitarPersonaje();
+	bool quitarPersonaje(Personaje* personaje);
 };
-
 Juego::Juego(int x, int y) : Personaje(x, y), ListaEnemigo(), ListaRecursos() {
-
 }
-
 void Juego::quitarAgua(Personaje* personaje) {
 	for (int i = 0; i < arregloAgua.size(); i++) {
 		Agua* agua = arregloAgua[i];
@@ -27,7 +22,6 @@ void Juego::quitarAgua(Personaje* personaje) {
 		}
 	}
 }
-
 void Juego::quitarSemilla(Personaje* personaje) {
 	for (int i = 0; i < arregloSemilla.size(); i++) {
 		Semilla* semilla = arregloSemilla[i];
@@ -38,7 +32,6 @@ void Juego::quitarSemilla(Personaje* personaje) {
 		}
 	}
 }
-
 void Juego::quitarResiduo(Personaje* personaje) {
 	for (int i = 0; i < arregloResiduo.size(); i++) {
 		Residuo* residuo = arregloResiduo[i];
@@ -49,18 +42,21 @@ void Juego::quitarResiduo(Personaje* personaje) {
 		}
 	}
 }
-
-
-void Juego::quitarPersonaje() {
+bool Juego::quitarPersonaje(Personaje* personaje) {
 	for (int i = 0; i < arregloEnemigo.size(); i++) {
 		int EnemigoX = arregloEnemigo.at(i)->getX();
 		int EnemigoY = arregloEnemigo.at(i)->getY();
-
-		int personajeX = getPX();
-		int personajeY = getPY();
-
-		if ((personajeX >= EnemigoX - 4 && personajeX <= EnemigoX + 4) && (personajeY >= EnemigoY - 4 && personajeY <= EnemigoY + 4)) {
-			borrarP();
+		int personajeX = personaje->getPX();
+		int personajeY = personaje->getPY();
+		// Verificar colisión
+		if ((personajeX >= EnemigoX - 1 && personajeX <= EnemigoX + 1) &&
+			(personajeY >= EnemigoY - 1 && personajeY <= EnemigoY + 1)) {
+			if (personaje->estaVivo()) {
+				personaje->reducirVida();  // Reducir una vida
+				personaje->mostrarVidas(personaje->getVidas());  // Mostrar vidas restantes
+			}
+			return true;  // Se detectó una colisión
 		}
 	}
+	return false;  // No hubo colisión
 }
