@@ -5,70 +5,55 @@ using namespace System;
 
 class Enemigo {
 protected:
-	double x, y;
-	double dx, dy;
+	int x, y;
+	int dx, dy;
 public:
-	Enemigo(double _x, double _y);
+	Enemigo(int _x, int _y,int _dx, int _dy);
 	~Enemigo();
 
-	double getX();
-	double getY();
+	int getX();
+	int getY();
 
-	void setX(double valor);
-	void setY(double valor);
+	void setX(int valor);
+	void setY(int valor);
 
 	void borrar();
-	void mover(char direccion);
+	void mover();
 	void dibujar();
 };
 
-Enemigo::Enemigo(double _x, double _y) {
+Enemigo::Enemigo(int _x, int _y, int _dx, int _dy) {
 	this->x = _x;
 	this->y = _y;
-	this->dx = 0;
-	this->dy = 0;
+	this->dx = _dx;
+	this->dy = _dy;
 }
 
 Enemigo::~Enemigo() {}
 
-double Enemigo::getX() {
+int Enemigo::getX() {
 	return this->x;
 }
-double Enemigo::getY() {
+int Enemigo::getY() {
 	return this->y;
 }
 
-void Enemigo::setX(double valor) {
+void Enemigo::setX(int valor) {
 	this->x = valor;
 }
-void Enemigo::setY(double valor) {
+void Enemigo::setY(int valor) {
 	this->y = valor;
 }
 
 void Enemigo::borrar() {
 	Console::SetCursorPosition(x, y); cout << " ";
 }
-void Enemigo::mover(char direccion) {
-	if (direccion == 0) {
-		if (y - 1 != 0) {
-			y--;
-		}
-	}
-	if (direccion == 1) {
-		if (y + 1 != 39) {
-			y++;
-		}
-	}
-	if (direccion == 2) {
-		if (x + 1 != 79) {
-			x++;
-		}
-	}
-	if (direccion == 3) {
-		if (x - 1 != 0) {
-			x--;
-		}
-	}
+void Enemigo::mover() {
+	if (x < 3 || x + 1 >118) dx *= -1;
+	if (y < 7 || y + 1 >35) dy *= -1;
+
+	x = x + dx;
+	y = y + dy;
 }
 void Enemigo::dibujar() {
 	Console::SetCursorPosition(x, y); cout << "X";

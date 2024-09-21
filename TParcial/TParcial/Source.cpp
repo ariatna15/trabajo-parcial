@@ -16,15 +16,18 @@ int main() {
 	int aguaTotal = generarAleatorio(4, 8);
 	int semillaTotal = generarAleatorio(4, 8);
 	int residuoTotal = generarAleatorio(4, 8);
+	int enemigoTotal = generarAleatorio(4, 8);
 
 	Juego* aguaAgarra = new Juego(1, 5);
 	Juego* semillaAgarra = new Juego(1, 2);
 	Juego* residuoAgarra = new Juego(1, 7);
+	Juego* enemigoCaza = new Juego(1, 6);
+
 
 	int xMax = 118; //del borde max del cuadro: x - 2
-	int yMax = 38;  //del borde max del cuadro: y - 2  empezarán a generarse dentro de ese rango
+	int yMax = 36;  //del borde max del cuadro: y - 2  empezarán a generarse dentro de ese rango
 	int xMin = 2;   //del borde min del cuadro: x + 2
-	int yMin = 6;   //del borde min del cuadro: y + 2
+	int yMin = 5;   //del borde min del cuadro: y + 2
 
 
 	for (int i = 0; i < aguaTotal; i++) {
@@ -41,6 +44,10 @@ int main() {
 		Residuo* nuevoResiduo = new Residuo(generarAleatorio(xMax, xMin), generarAleatorio(yMax, yMin));
 		residuoAgarra->agregarResiduo(nuevoResiduo);
 	}
+	for (int i = 0; i < enemigoTotal; i++) {
+		Enemigo* nuevoEnemigo = new Enemigo(generarAleatorio(xMax, xMin), generarAleatorio(yMax, yMin), 1, 1);
+		enemigoCaza->agregarEnemigo(nuevoEnemigo);
+	}
 
 	char tecla;
 	while (1) {
@@ -55,7 +62,7 @@ int main() {
 			while (jugando) {
 				if (_kbhit()) {
 					tecla = toupper(_getch());
-					Objpersonaje->borrar();
+					Objpersonaje->borrarP();
 					Objpersonaje->mover(tecla);
 					Objpersonaje->dibujar();
 				}
@@ -86,10 +93,20 @@ int main() {
 					}
 				}
 
+				if (enemigoCaza->tamEnemigo() > 0) {
+					for (int i = 0; i < enemigoCaza->tamEnemigo(); i++) {
+						Enemigo* nuevoEnemigo = enemigoCaza->obtenerEnemigo(i);
+						nuevoEnemigo->borrar();
+						nuevoEnemigo->mover();
+						nuevoEnemigo->dibujar();
+					}
+				}
+
 				// Verifica si el personaje ha recogido algún recurso
 				aguaAgarra->quitarAgua();
 				semillaAgarra->quitarSemilla();
 				residuoAgarra->quitarResiduo();
+				enemigoCaza->quitarPersonaje();
 			}
 		}
 		else if (op == 2) {

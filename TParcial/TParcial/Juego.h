@@ -10,7 +10,7 @@ public:
 	void quitarAgua();
 	void quitarSemilla();
 	void quitarResiduo();
-
+	void quitarPersonaje();
 };
 
 Juego::Juego(int x, int y) : Personaje(x, y), ListaEnemigo(), ListaRecursos() {
@@ -58,6 +58,20 @@ void Juego::quitarResiduo() {
 		if ((personajeX >= ResiduoX - 4 && personajeX <= ResiduoX + 4) && (personajeY >= ResiduoY - 4 && personajeY <= ResiduoY + 4)) {
 			arregloResiduo.at(i)->borrar();
 			arregloResiduo.erase(arregloResiduo.begin() + i);
+		}
+	}
+}
+
+void Juego::quitarPersonaje() {
+	for (int i = 0; i < arregloEnemigo.size(); i++) {
+		int EnemigoX = arregloEnemigo.at(i)->getX();
+		int EnemigoY = arregloEnemigo.at(i)->getY();
+
+		int personajeX = getPX();
+		int personajeY = getPY();
+
+		if ((personajeX >= EnemigoX - 4 && personajeX <= EnemigoX + 4) && (personajeY >= EnemigoY - 4 && personajeY <= EnemigoY + 4)) {
+			borrarP();
 		}
 	}
 }

@@ -10,9 +10,13 @@ protected:
 	vector<Enemigo*>arregloEnemigo;
 public:
 	ListaEnemigo();
+
 	void agregarEnemigo(Enemigo* nuevo);
+
 	Enemigo* obtenerEnemigo(int indice);
-	int tamaño();
+
+	int tamEnemigo();
+
 	vector<Enemigo*> retornar();
 };
 
@@ -28,7 +32,7 @@ Enemigo* ListaEnemigo::obtenerEnemigo(int indice) {
 	return arregloEnemigo.at(indice);
 }
 
-int ListaEnemigo::tamaño() {
+int ListaEnemigo::tamEnemigo() {
 	return arregloEnemigo.size();
 }
 

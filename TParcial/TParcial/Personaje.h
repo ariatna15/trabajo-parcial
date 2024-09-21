@@ -13,7 +13,7 @@ public:
 	Personaje();
 	Personaje(int _px, int _py);
 	~Personaje();
-	void borrar();
+	void borrarP();
 	void mover(char tecla);
 	void dibujar();
 
@@ -39,21 +39,21 @@ Personaje::Personaje(int _px, int _py) {
 }
 Personaje::~Personaje() {}
 
-void Personaje::borrar() {
+void Personaje::borrarP() {
 	Console::SetCursorPosition(px, py); cout << "     ";
 }
 
 void Personaje::mover(char tecla) {
-	if (tecla == 'W' && py > 0) {
+	if (tecla == 'W' && py > 5) {
 		py--;
 	}
-	if (tecla == 'S' && py < 39) {
+	if (tecla == 'S' && py < 37) {
 		py++;
 	}
-	if (tecla == 'D' && px < 119) {
+	if (tecla == 'D' && px < 116) {
 		px++;
 	}
-	if (tecla == 'A' && px > 0) {
+	if (tecla == 'A' && px > 2) {
 		px--;
 	}
 }
