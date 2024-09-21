@@ -56,5 +56,7 @@ void Enemigo::mover() {
 	y = y + dy;
 }
 void Enemigo::dibujar() {
+	Console::ForegroundColor = ConsoleColor::Red;
 	Console::SetCursorPosition(x, y); cout << "X";
+	Console::ForegroundColor = ConsoleColor::White; 
 }

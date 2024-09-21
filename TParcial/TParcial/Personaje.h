@@ -65,7 +65,9 @@ void Personaje::mover(char tecla) {
 }
 // Dibujar personaje en pantalla
 void Personaje::dibujar() {
+    Console::ForegroundColor = ConsoleColor::Cyan;
     Console::SetCursorPosition(px, py); cout << "@";
+    Console::ForegroundColor = ConsoleColor::White;
 
 }
 // Obtener posición X

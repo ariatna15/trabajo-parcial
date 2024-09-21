@@ -25,7 +25,7 @@ void iniciarJuego() {
     int xMax = 118;
     int yMax = 36;
     int xMin = 2;
-    int yMin = 5;
+    int yMin = 6;
     // Generar recursos de agua, semillas, residuos y enemigos
     for (int i = 0; i < aguaTotal; i++) {
         Agua* nuevoAgua = new Agua(generarAleatorio(xMax, xMin), generarAleatorio(yMax, yMin));
@@ -45,7 +45,7 @@ void iniciarJuego() {
     }
     // Iniciar el juego
     bool jugando = true;
-    auto start = std::chrono::high_resolution_clock::now();  // Inicio del tiempo
+    auto start = chrono::high_resolution_clock::now();  // Inicio del tiempo
     int tiempoLimite = 50;  // Límite de tiempo en segundos
     while (jugando) {
         // Si se detecta entrada del teclado, mover al personaje
@@ -55,8 +55,8 @@ void iniciarJuego() {
             Objpersonaje->mover(tecla);
             Objpersonaje->dibujar();
         }
-        // Simular un retraso para no consumir demasiados recursos
-        _sleep(50);
+        
+        _sleep(30);
         // Dibujar los recursos
         for (int i = 0; i < aguaAgarra->tamAgua(); i++) {
             Agua* nuevaAgua = aguaAgarra->obtenerAgua(i);
@@ -79,38 +79,38 @@ void iniciarJuego() {
             nuevoEnemigo->mover();
             nuevoEnemigo->dibujar();
         }
-        // Verificar si el personaje ha recogido algún recurso
+        
         aguaAgarra->quitarAgua(Objpersonaje);
         semillaAgarra->quitarSemilla(Objpersonaje);
         residuoAgarra->quitarResiduo(Objpersonaje);
-        if (enemigoCaza->quitarPersonaje(Objpersonaje)) {
-            // Ya se ha manejado la reducción de vida en la función de quitarPersonaje
-        }
+
+        if (enemigoCaza->quitarPersonaje(Objpersonaje)) {}
         if (!Objpersonaje->estaVivo()) {
-            // El personaje ha perdido todas las vidas
-            game_over();  // Lógica para el fin del juego
+            game_over(); 
             jugando = false;
         }
 
         // Controlar el tiempo límite
-        auto now = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> elapsed = now - start;
+        auto now = chrono::high_resolution_clock::now();
+        chrono::duration<double> elapsed = now - start;
         int tiempoRestante = tiempoLimite - static_cast<int>(elapsed.count());
+
         // Mostrar tiempo restante
         Console::SetCursorPosition(0, 2);
         std::cout << "TIEMPO RESTANTE: " << tiempoRestante << " SEGUNDOS" << std::endl;
         // Verificar si el tiempo ha terminado
+
         if (elapsed.count() >= tiempoLimite) {
             system("cls");
-            game_over();  // Lógica del Game Over
+            game_over();  
             jugando = false;
         }
-        // Verificar si todos los recursos han sido recogidos
+       
         if (aguaAgarra->tamAgua() == 0 && semillaAgarra->tamSemilla() == 0 && residuoAgarra->tamResiduo() == 0) {
             you_win();
             jugando = false;
         }
         // Simular un pequeño retraso para que el juego no consuma demasiados recursos
-        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        this_thread::sleep_for(chrono::milliseconds(50));
     }
 }
