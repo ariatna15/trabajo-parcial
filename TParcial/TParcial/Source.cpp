@@ -103,9 +103,9 @@ int main() {
 				}
 
 				// Verifica si el personaje ha recogido algún recurso
-				aguaAgarra->quitarAgua();
-				semillaAgarra->quitarSemilla();
-				residuoAgarra->quitarResiduo();
+				aguaAgarra->quitarAgua(Objpersonaje);
+				semillaAgarra->quitarSemilla(Objpersonaje);
+				residuoAgarra->quitarResiduo(Objpersonaje);
 				enemigoCaza->quitarPersonaje();
 			}
 		}
