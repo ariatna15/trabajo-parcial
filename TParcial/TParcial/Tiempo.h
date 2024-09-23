@@ -15,7 +15,7 @@ void iniciarJuego() {
     int aguaTotal = generarAleatorio(4, 8);
     int semillaTotal = generarAleatorio(4, 8);
     int residuoTotal = generarAleatorio(4, 8);
-    int enemigoTotal = generarAleatorio(4, 8);
+    int enemigoTotal = generarAleatorio(4, 10);
     // Crear objetos Juego para diferentes tipos de recursos y enemigos
     Juego* aguaAgarra = new Juego(1, 5);
     Juego* semillaAgarra = new Juego(1, 2);
@@ -46,7 +46,7 @@ void iniciarJuego() {
     // Iniciar el juego
     bool jugando = true;
     auto start = chrono::high_resolution_clock::now();  // Inicio del tiempo
-    int tiempoLimite = 50;  // Límite de tiempo en segundos
+    int tiempoLimite = 60;  // Límite de tiempo en segundos
     while (jugando) {
         // Si se detecta entrada del teclado, mover al personaje
         if (_kbhit()) {
@@ -97,7 +97,7 @@ void iniciarJuego() {
 
         // Mostrar tiempo restante
         Console::SetCursorPosition(0, 2);
-        std::cout << "TIEMPO RESTANTE: " << tiempoRestante << " SEGUNDOS" << std::endl;
+        cout << "TIEMPO RESTANTE: " << tiempoRestante << " SEGUNDOS" << endl;
         // Verificar si el tiempo ha terminado
 
         if (elapsed.count() >= tiempoLimite) {
@@ -106,11 +106,12 @@ void iniciarJuego() {
             jugando = false;
         }
        
-        if (aguaAgarra->tamAgua() == 0 && semillaAgarra->tamSemilla() == 0 && residuoAgarra->tamResiduo() == 0) {
+        int recursosRecoleccionados = aguaTotal - aguaAgarra->tamAgua() + semillaTotal - semillaAgarra->tamSemilla() + residuoTotal - residuoAgarra->tamResiduo();
+        if (recursosRecoleccionados >= 0.7 * (aguaTotal + semillaTotal + residuoTotal)) {
             you_win();
             jugando = false;
         }
         // Simular un pequeño retraso para que el juego no consuma demasiados recursos
-        this_thread::sleep_for(chrono::milliseconds(50));
+        
     }
 }

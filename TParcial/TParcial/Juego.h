@@ -49,8 +49,8 @@ bool Juego::quitarPersonaje(Personaje* personaje) {
 		int personajeX = personaje->getPX();
 		int personajeY = personaje->getPY();
 		// Verificar colisión
-		if ((personajeX >= EnemigoX - 1 && personajeX <= EnemigoX + 1) &&
-			(personajeY >= EnemigoY - 1 && personajeY <= EnemigoY + 1)) {
+		if ((personajeX >= EnemigoX -1 && personajeX <= EnemigoX +1) &&
+			(personajeY >= EnemigoY -1 && personajeY <= EnemigoY +1)) {
 			if (personaje->estaVivo()) {
 				personaje->reducirVida();  // Reducir una vida
 				personaje->mostrarVidas(personaje->getVidas());  // Mostrar vidas restantes
